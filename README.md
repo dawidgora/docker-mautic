@@ -39,6 +39,10 @@ It's also possible to target a specific build for a given patch:
 
 * `<major.minor.patch>-<YYYYMMDD>-<variant>`
 
+## Registry
+
+Images for this fork are published to `ghcr.io/dawidgora/docker-mautic`. Adjust the examples below if you publish to an alternative registry.
+
 ## Variants
 
 The Docker images exist in 2 variants:
@@ -53,6 +57,7 @@ Each variant contains:
 * the needed dependencies to run Mautic (e.g. PHP modules)
 * the Mautic codebase installed via composer (see mautic/recommended-project)
 * the needed files and configuration to run as a specific role
+* PHP's IMAP extension and Symfony's Google Mailer (Gmail) transport so these integrations work out of the box
 
 See the `examples` explanation below how you could use them.
 
@@ -109,7 +114,7 @@ You can build your own images easily using the `docker build` command in the roo
 
 To build Mautic 6.0.6 apache, run:
 ```
-docker build . --build-arg FLAVOUR=apache --build-arg BASE_TAG=8.3-apache-bookworm --build-arg MAUTIC_VERSION=6.0.6 mautic/mautic:6-apache
+docker build . --build-arg FLAVOUR=apache --build-arg BASE_TAG=8.3-apache-bookworm --build-arg MAUTIC_VERSION=6.0.6 ghcr.io/dawidgora/docker-mautic:6-apache
 ```
 
 ## Persistent storage

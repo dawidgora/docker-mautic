@@ -63,6 +63,8 @@ ARG MAUTIC_VERSION=6.x-dev
 
 RUN cd /opt && \
     COMPOSER_ALLOW_SUPERUSER=1 COMPOSER_PROCESS_TIMEOUT=10000 composer create-project mautic/recommended-project:${MAUTIC_VERSION} mautic --no-interaction && \
+    cd /opt/mautic && \
+    COMPOSER_ALLOW_SUPERUSER=1 COMPOSER_PROCESS_TIMEOUT=10000 composer require --no-interaction symfony/google-mailer && \
     rm -rf /opt/mautic/var/cache/js && \
     find /opt/mautic/node_modules -mindepth 1 -maxdepth 1 -not \( -name 'jquery' -or -name 'vimeo-froogaloop2' \) | xargs rm -rf
 
@@ -105,6 +107,9 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/docroot
 # Copy php settings and extensions from builder
 COPY --from=builder /usr/local/lib/php/extensions /usr/local/lib/php/extensions
 COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+
+# Ensure IMAP extension stays enabled in the runtime image
+RUN docker-php-ext-enable imap
 
 # Copy php.ini from templates
 COPY --from=builder /common/templates/php.ini /usr/local/etc/php/php.ini
