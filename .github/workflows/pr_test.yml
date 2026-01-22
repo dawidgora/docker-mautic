@@ -33,7 +33,7 @@ jobs:
           platforms: linux/amd64
           build-args: |
             BASE_TAG=8.3-apache-bookworm
-            MAUTIC_VERSION=6.0.7
+            MAUTIC_VERSION=7.0.0
             FLAVOUR=${{ matrix.image_type }}
 
       - name: Save image to tar file
@@ -79,7 +79,7 @@ jobs:
         run: docker load -i image.tar
 
       - name: Run Trivy
-        uses: aquasecurity/trivy-action@0.31.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: 'mautic-${{ matrix.image_type }}'
           format: 'table'

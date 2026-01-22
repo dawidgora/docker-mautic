@@ -101,7 +101,7 @@ For each example, there are 2 files where settings can be set:
 
 You can build your own images easily using the `docker build` command in the root of this directory, parsing the following ARGs depending on the version you wish to build:
 
- | MAUTIC_VERSION | BASE_TAG | FLAVOUR
+Version | MAUTIC_VERSION | BASE_TAG | FLAVOUR
 ---|---|---|---
 5.2.X (Apache) | `5.2.0` to `5.2.8` | 8.2-apache-bookworm | apache
 5.2.X (FPM) | `5.2.0` to `5.2.8` | 8.2-fpm-bookworm | fpm

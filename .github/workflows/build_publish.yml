@@ -42,7 +42,7 @@ jobs:
           MAJOR=$(echo "${{ inputs.mautic_version }}" | cut -d. -f1)
           if [ "$MAJOR" = "5" ]; then PHPVER="8.2";
           elif [ "$MAJOR" = "6" ]; then PHPVER="8.3";
-          elif [ "$MAJOR" = "7" ]; then PHPVER="8.4";
+          elif [ "$MAJOR" = "7" ]; then PHPVER="8.3";
           else echo "Unsupported Mautic major version: $MAJOR"; exit 1; fi
           echo "PHPVER=$PHPVER" >> $GITHUB_ENV
 
@@ -187,7 +187,7 @@ jobs:
           MAJOR=$(echo "${{ inputs.mautic_version }}" | cut -d. -f1)
           if [ "$MAJOR" = "5" ]; then PHPVER="8.2";
           elif [ "$MAJOR" = "6" ]; then PHPVER="8.3";
-          elif [ "$MAJOR" = "7" ]; then PHPVER="8.4";
+          elif [ "$MAJOR" = "7" ]; then PHPVER="8.3";
           else echo "Unsupported Mautic major version: $MAJOR"; exit 1; fi
           echo "PHPVER=$PHPVER" >> $GITHUB_ENV
 
